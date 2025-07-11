@@ -1,0 +1,39 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      meta.helm.sh/release-name: wp
+      meta.helm.sh/release-namespace: wordpress
+    creationTimestamp: "2025-07-11T08:52:02Z"
+    generation: 1
+    labels:
+      app.kubernetes.io/instance: wp
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: wordpress
+      app.kubernetes.io/version: 6.8.1
+      helm.sh/chart: wordpress-25.0.1
+    name: wp-wordpress
+    namespace: wordpress
+    resourceVersion: "1627"
+    uid: ecaf8892-9f4b-4983-85dc-1e7a7b6f88cc
+  spec:
+    rules:
+    - host: wordpress.local
+      http:
+        paths:
+        - backend:
+            service:
+              name: wp-wordpress
+              port:
+                name: http
+          path: /
+          pathType: ImplementationSpecific
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 192.168.49.2
+kind: List
+metadata:
+  resourceVersion: ""
